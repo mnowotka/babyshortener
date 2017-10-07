@@ -1,9 +1,6 @@
-from flask import Blueprint, flash, request
+from flask import flash, request
 from flask_restful import Resource
 from babyshortener import controllers
-from babyshortener.extensions import api
-
-bp = Blueprint('api', __name__)
 
 # ----------------------------------------------------------------------------------------------------------------------
 
@@ -25,5 +22,3 @@ class ShortUrl(Resource):
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-api.add_resource(ShortUrl, '/shorten_url')
-api.init_app(bp)

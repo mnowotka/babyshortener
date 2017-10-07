@@ -24,7 +24,9 @@ def register_extensions(app):
 
 
 def register_blueprints(app):
-    for name in find_modules('babyshortener.blueprints'):
+    print 'registering blueprints...'
+    for name in find_modules('babyshortener.blueprints', include_packages=True):
+        print 'module', name
         mod = import_string(name)
         if hasattr(mod, 'bp'):
             app.register_blueprint(mod.bp)
