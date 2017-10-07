@@ -1,6 +1,6 @@
 from flask import Flask
 from werkzeug.utils import find_modules, import_string
-from babyshortener.models import db
+from babyshortener.extensions import db
 from babyshortener.config import DefaultConfig
 
 # ----------------------------------------------------------------------------------------------------------------------

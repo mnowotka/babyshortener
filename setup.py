@@ -21,7 +21,9 @@ setup(
               ],
     long_description=open('README.md').read(),
     tests_require=['WebTest'],
-    install_requires=['flask', 'flask_sqlalchemy'],
+    install_requires=['flask',
+                      'flask_sqlalchemy',
+                      'flask-restful'],
     package_data={
         'babyshortener': ['samples/*', 'static/*', 'tests/*'],
         },
