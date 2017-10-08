@@ -6,9 +6,23 @@ Actually, currently there is only a single model but I can imaging more:
 - Model to register users
 - many more...
 
+TODO:
+* make full and short url lengths configurable
+
 """
 
 from babyshortener.extensions import db
+
+
+# Currently Chrome browser is the most liberal in terms of maximum allowed URL
+# (https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers)
+# In practice this can be much smaller (~2000) due to Apache limitations.
+CHROME_MAX_URL_LENGTH = 32779
+
+# Since hash is currently base62-encoded 10 characters give 839299365868340224 possible values.
+# The biggest integer value that SQLite can handle (I assume this is the worst db backend that can be used here) is
+# 9223372036854775807, then this is the safest value as 62^11 = 52036560683837093888 > 9223372036854775807.
+MAX_HASH_LENGTH = 10
 
 # ----------------------------------------------------------------------------------------------------------------------
 
@@ -21,8 +35,8 @@ class URL(db.Model):
     primary key.
     """
     id = db.Column(db.Integer, primary_key=True)
-    full = db.Column(db.String(80), unique=True, nullable=False, index=True)
-    short = db.Column(db.String(120), nullable=True)
+    full = db.Column(db.String(CHROME_MAX_URL_LENGTH), unique=True, nullable=False, index=True)
+    short = db.Column(db.String(MAX_HASH_LENGTH), nullable=True)
 
 # ----------------------------------------------------------------------------------------------------------------------
 
