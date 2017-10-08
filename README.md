@@ -53,3 +53,19 @@ To redirect:
 ```
 curl http://localhost:5000/1VV
 ```
+
+## How to configure to scale?
+
+1. Provide your own settings file and configure `SQLALCHEMY_DATABASE_URI` to point to the production database
+
+2. Deploy behind gunicorn & NGINX (https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-14-04)
+
+```
+export BABYSHORTENER_SETTINGS=/path/to/settings.cfg
+gunicorn --bind localhost:8080 --workers 4 'babyshortener.run_shortener:main'
+
+```
+
+3. Deploy on multiple machines behind a load balancer
+
+4. Add a cache layer

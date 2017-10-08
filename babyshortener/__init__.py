@@ -1,6 +1,6 @@
 from flask import Flask
 from werkzeug.utils import find_modules, import_string
-from babyshortener.extensions import db
+from babyshortener.extensions import db, cors
 from babyshortener.config import DefaultConfig
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -15,6 +15,7 @@ def create_app(config=DefaultConfig()):
     """
     app = Flask(__name__)
     app.config.from_object(config)
+    app.config.from_envvar('BABYSHORTENER_SETTINGS', silent=True)
     register_extensions(app)
     register_blueprints(app)
     register_cli(app)
@@ -30,6 +31,7 @@ def register_extensions(app):
     Not too DRY, I'd say but I don't have time for that now.
     """
     db.init_app(app)
+    cors.init_app(app)
 
 
 # ----------------------------------------------------------------------------------------------------------------------

@@ -27,7 +27,8 @@ setup(
     tests_require=['WebTest'],
     install_requires=['flask',
                       'flask_sqlalchemy',
-                      'flask-restful'],
+                      'flask-restful',
+                      'flask-cors'],
     package_data={
         'babyshortener': ['samples/*', 'static/*', 'tests/*'],
         },
