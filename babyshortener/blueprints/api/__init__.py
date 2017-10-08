@@ -1,3 +1,9 @@
+"""This file defines api Blueprint and registers resources that should belong to it.
+
+Currently we have a single resource so it may look like an overkill.
+
+"""
+
 from flask import Blueprint
 
 from babyshortener.blueprints.api.resources.short_url import ShortUrl

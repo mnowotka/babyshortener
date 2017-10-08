@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+"""This script when called directly runs a dubug server.
+But it also exposes a WSGI application object to be used by servers like gunicorn.
+
+"""
+
+
 __author__ = 'mnowotka'
 from babyshortener import create_app
 
