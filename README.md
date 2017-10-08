@@ -3,7 +3,7 @@ Simple URL shortener implemented using Flask
 
 [![Build Status](https://travis-ci.org/mnowotka/babyshortener.svg?branch=master)](https://travis-ci.org/mnowotka/babyshortener)
 
-Persistence layer provided by SQLAlchemy (flask_sqlalchemy). API Resource class provided by flask-restful
+Persistence layer provided by SQLAlchemy (`flask_sqlalchemy`). API Resource class provided by `flask-restful`
 
 ## How to install?
 
@@ -32,15 +32,15 @@ python tests/test_shortener.py
 
 ## How to run development server?
 
-If installed by cloning GitHub repo, add project root directory to PYTHONAPTH and run:
+If installed by cloning `GitHub` repo, add project root directory to `PYTHONPATH` and run:
 
 ```
 python babyshortener/run_shortener.py
 ```
 
-If installed via pip, the `run_shortener` command should be available
+If installed via `pip`, the `run_shortener` command should be available
 
-## How to make request using curl?
+## How to make request using `curl`?
 
 To shorten:
 
