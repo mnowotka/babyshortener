@@ -7,7 +7,7 @@ from setuptools import setup
 
 setup(
     name='babyshortener',
-    version='0.0.1',
+    version='0.0.2',
     entry_points={
         'console_scripts': [
             'run_shortener=babyshortener.run_shortener:main']
