@@ -11,6 +11,7 @@ def create_app(config=DefaultConfig()):
     app.config.from_object(config)
     register_extensions(app)
     register_blueprints(app)
+    register_cli(app)
     return app
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -24,13 +25,30 @@ def register_extensions(app):
 
 
 def register_blueprints(app):
-    print 'registering blueprints...'
     for name in find_modules('babyshortener.blueprints', include_packages=True):
-        print 'module', name
         mod = import_string(name)
         if hasattr(mod, 'bp'):
             app.register_blueprint(mod.bp)
 
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+def register_cli(app):
+    @app.cli.command('initdb')
+    def initdb_command():
+        db.create_all()
+        print('Initialized the database.')
+
+    @app.cli.command('cleardb')
+    def initdb_command():
+        db.drop_all()
+        print('Dropped the database.')
+
+    @app.cli.command('refreshdb')
+    def initdb_command():
+        db.drop_all()
+        db.create_all()
+        print('Recreated the database.')
 
 # ----------------------------------------------------------------------------------------------------------------------
 
